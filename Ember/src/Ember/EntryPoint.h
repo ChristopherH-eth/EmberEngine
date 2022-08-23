@@ -30,6 +30,12 @@ extern Ember::Application* Ember::CreateApplication();
 
 int main(int arc, char** argv) {
 
+	// Initialize loggers
+	Ember::Log::Init();
+	EM_CORE_WARN("Initialized Log!");
+	EM_INFO("Hello!");
+
+	// Launch Sandbox Application
 	auto app = Ember::CreateApplication();
 	app->Run();
 	delete app;

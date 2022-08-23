@@ -11,26 +11,33 @@
 *  distributed under the License is distributed on an "AS IS" BASIS,
 *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 *  See the License for the specific language governing permissions and
-*  limitations under the License. 
-* 
-*  @file SandboxApp.cpp
-*  @author Original Author Yan Chernikov - Used for learning purposes by 
+*  limitations under the License.
+*
+*  @file Log.cpp
+*  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
 *  @brief All files included in this project contain code from The Cherno's
 *		Hazel game engine creation series.
 */
 
-#include <Ember.h>
+#include "Log.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
-class Sandbox : public Ember::Application {
+namespace Ember {
 
-	public:
-		Sandbox() {}
-		~Sandbox() {}
+	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
+	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
-};
+	// The Init() function initializes CLIENT and CORE loggers, as well as format
+	// logger messages.
+	void Log::Init() {
+		spdlog::set_pattern("%^[%T] %n: %v%$");
+		
+		s_CoreLogger = spdlog::stdout_color_mt("EMBER");
+		s_CoreLogger->set_level(spdlog::level::trace);
 
-// Launch Sandbox Application CLIENT side
-Ember::Application* Ember::CreateApplication() {
-	return new Sandbox();
+		s_ClientLogger = spdlog::stdout_color_mt("APP");
+		s_ClientLogger->set_level(spdlog::level::trace);
+	}
+
 }
