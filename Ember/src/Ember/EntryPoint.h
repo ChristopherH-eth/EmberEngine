@@ -22,8 +22,6 @@
 
 #pragma once
 
-#include "Application.h"
-
 #ifdef EM_PLATFORM_WINDOWS
 
 extern Ember::Application* Ember::CreateApplication();

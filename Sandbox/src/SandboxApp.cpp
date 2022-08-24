@@ -11,10 +11,10 @@
 *  distributed under the License is distributed on an "AS IS" BASIS,
 *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 *  See the License for the specific language governing permissions and
-*  limitations under the License. 
-* 
+*  limitations under the License.
+*
 *  @file SandboxApp.cpp
-*  @author Original Author Yan Chernikov - Used for learning purposes by 
+*  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
 *  @brief All files included in this project contain code from The Cherno's
 *		Hazel game engine creation series.
@@ -24,9 +24,9 @@
 
 class Sandbox : public Ember::Application {
 
-	public:
-		Sandbox() {}
-		~Sandbox() {}
+public:
+	Sandbox() {}
+	~Sandbox() {}
 
 };
 

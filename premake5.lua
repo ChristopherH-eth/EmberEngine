@@ -1,0 +1,118 @@
+/**
+*  Copyright 2022 0xChristopher
+*
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*
+*  @file premake5.lua
+*  @author Original Author Yan Chernikov - Used for learning purposes by
+*		0xChristopher
+*  @brief All files included in this project contain code from The Cherno's
+*		Hazel game engine creation series.
+*/
+
+workspace "Ember"
+	architecture "x64"
+
+	configurations {
+		"Debug",
+		"Release",
+		"Dist"
+	}
+
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+project "Ember"
+	location "Ember"
+	kind "SharedLib"
+	language "C++"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files {
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs {
+		"%{prj.name}/vendor/spdlog/include"
+	}
+
+	filter "system:windows"
+		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
+
+		defines {
+			"EM_PLATFORM_WINDOWS",
+			"EM_BUILD_DLL"
+		}
+
+		postbuildcommands {
+			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+		}
+
+	filter "configurations:Debug"
+		defines "EM_DEBUG"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "EM_RELEASE"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "EM_DIST"
+		optimize "On"
+
+project "Sandbox"
+	location "Sandbox"
+		kind "ConsoleApp"
+		language "C++"
+
+		targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+		objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+		files {
+			"%{prj.name}/src/**.h",
+			"%{prj.name}/src/**.cpp"
+		}
+
+		includedirs {
+			"Ember/vendor/spdlog/include",
+			"Ember/src"
+		}
+
+		links {
+			"Ember"
+		}
+
+		filter "system:windows"
+			cppdialect "C++17"
+			staticruntime "On"
+			systemversion "latest"
+
+			defines {
+				"EM_PLATFORM_WINDOWS"
+			}
+
+	filter "configurations:Debug"
+		defines "EM_DEBUG"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "EM_RELEASE"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "EM_DIST"
+		optimize "On"

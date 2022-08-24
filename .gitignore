@@ -2,8 +2,9 @@
 **/bin/
 bin-int/
 
-# Hazel files
+# Ember files
 *.log
+*.bat
 
 # Visual Studio files and folder
 .vs/
