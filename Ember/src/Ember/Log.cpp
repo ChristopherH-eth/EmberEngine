@@ -19,6 +19,7 @@
 *  @brief Log translation unit
 */
 
+#include "empch.h"
 #include "Log.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 

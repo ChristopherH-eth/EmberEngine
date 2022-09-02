@@ -19,6 +19,7 @@
 *  @brief Engine side application translation unit
 */
 
+#include "empch.h"
 #include "Application.h"
 #include "Ember/Events/ApplicationEvent.h"
 #include "Ember/Log.h"

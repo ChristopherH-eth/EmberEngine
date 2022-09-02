@@ -21,9 +21,7 @@
 
 #pragma once
 
-#include <string>
 #include <functional>
-
 #include "Ember/Core.h"
 
 /**
