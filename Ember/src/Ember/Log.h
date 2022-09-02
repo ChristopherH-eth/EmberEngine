@@ -1,5 +1,5 @@
 /**
-*  Copyright 2022 0xChristopher
+*  Copyright 2022 The Cherno - Hazel Game Engine
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 *  @file Log.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief All files included in this project contain code from The Cherno's
-*		Hazel game engine creation series.
+*  @brief Log header file
 */
 
 #pragma once
@@ -25,9 +24,11 @@
 #include <memory>
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Ember {
 
+	/// @see The Log class implements spdlog for log formating
 	class EMBER_API Log {
 
 	public:
@@ -45,15 +46,15 @@ namespace Ember {
 }
 
 // Core log macros
-#define EM_CORE_TRACE(...) ::Ember::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define EM_CORE_INFO(...) ::Ember::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define EM_CORE_WARN(...) ::Ember::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define EM_CORE_ERROR(...) ::Ember::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define EM_CORE_FATAL(...) ::Ember::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define EM_CORE_TRACE(...)	::Ember::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define EM_CORE_INFO(...)	::Ember::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define EM_CORE_WARN(...)	::Ember::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define EM_CORE_ERROR(...)	::Ember::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define EM_CORE_FATAL(...)	::Ember::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // Client log macros
-#define EM_TRACE(...) ::Ember::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define EM_INFO(...) ::Ember::Log::GetClientLogger()->info(__VA_ARGS__)
-#define EM_WARN(...) ::Ember::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define EM_ERROR(...) ::Ember::Log::GetClientLogger()->error(__VA_ARGS__)
-#define EM_FATAL(...) ::Ember::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define EM_TRACE(...)	::Ember::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define EM_INFO(...)	::Ember::Log::GetClientLogger()->info(__VA_ARGS__)
+#define EM_WARN(...)	::Ember::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define EM_ERROR(...)	::Ember::Log::GetClientLogger()->error(__VA_ARGS__)
+#define EM_FATAL(...)	::Ember::Log::GetClientLogger()->fatal(__VA_ARGS__)

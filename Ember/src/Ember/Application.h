@@ -1,5 +1,5 @@
 /**
-*  Copyright 2022 0xChristopher
+*  Copyright 2022 The Cherno - Hazel Game Engine
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 *  @file Application.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief All files included in this project contain code from The Cherno's
-*		Hazel game engine creation series.
+*  @brief Application header file
 */
 
 #pragma once
 
 #include "Core.h"
+#include "Events/Event.h"
 
 namespace Ember {
 

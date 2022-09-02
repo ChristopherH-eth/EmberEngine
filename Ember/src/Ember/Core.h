@@ -1,5 +1,5 @@
 /**
-*  Copyright 2022 0xChristopher
+*  Copyright 2022 The Cherno - Hazel Game Engine
 *
 *  Licensed under the Apache License, Version 2.0 (the "License");
 *  you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 *  @file Core.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief All files included in this project contain code from The Cherno's
-*		Hazel game engine creation series.
+*  @brief Core
 */
 
 #pragma once
@@ -31,3 +30,5 @@
 #else
 	#error Ember only supports Windows!
 #endif
+
+#define BIT(x) (1 << x)
