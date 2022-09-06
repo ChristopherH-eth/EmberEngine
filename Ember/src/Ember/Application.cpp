@@ -37,26 +37,48 @@ namespace Ember {
 
 	Application::~Application() {}
 
+	void Application::PushLayer(Layer* layer) {
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer) {
+		m_LayerStack.PushOverlay(layer);
+	}
+
 	/// @brief The OnEvent() function defines what is called when an event is received.
+	/// @param e The event to be dispatched and handled
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		EM_CORE_TRACE("{0}", e);
+		/// Iterate through the layer stack to handle an event. Break once the event is handled.
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
+			(*--it)->OnEvent(e);
+
+			if (e.Handled)
+				break;
+		}
 	}
 
 	/// @brief The Run() function keeps the application running until it receives a window
-	/// close event.
+	/// close event. It updates the window and the layers.
 	void Application::Run() {
 		while (m_Running) {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
+
 			m_Window->OnUpdate();
 		}
 	}
 
-	/// @brief The OnWindowClose() function tells the window what to do when a window close
-	/// event is received.
+	/** 
+	 * @brief The OnWindowClose() function tells the window what to do when a window close
+	 * event is received.
+	 * @param e The event to be handled
+	 */
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_Running = false;
 		

@@ -13,20 +13,23 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 *
-*  @file Ember.h (Original - Hazel.h)
+*  @file Layer.cpp
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Ember header file
+*  @brief Layer source file: This file defines layer functions.
 */
 
-#pragma once
+#include "empch.h"
+#include "Layer.h"
 
-/// For use by Ember applications
+namespace Ember {
 
-#include "Ember/Application.h"
-#include "Ember/Layer.h"
-#include "Ember/Log.h"
+	/// @brief The Layer constructor and destructor
+	/// @param debugName The name of a given layer
+	Layer::Layer(const std::string& debugName)
+		: m_DebugName(debugName) {
+	}
 
-/// ---Entry Point-----------------------
-#include "Ember/EntryPoint.h"
-/// -------------------------------------
+	Layer::~Layer() {}
+
+}

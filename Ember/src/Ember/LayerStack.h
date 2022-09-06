@@ -13,47 +13,41 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 *
-*  @file Application.h
+*  @file LayerStack.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Application header file: This file declares the functions to be used by the
-*		  application source file.
+*  @brief LayerStack header file: This file declares the functions to be used by the
+*		  layer stack source file.
 */
 
 #pragma once
 
+#include <vector>
 #include "Core.h"
-#include "Window.h"
-#include "Ember/LayerStack.h"
-#include "Ember/Events/Event.h"
-#include "Ember/Events/ApplicationEvent.h"
+#include "Layer.h"
 
 namespace Ember {
 
-	/// @brief The Application class
-	class EMBER_API Application {
+	class EMBER_API LayerStack {
 
 	public:
-		Application();
-		virtual ~Application();
+		/// @brief LayerStack constructor and destructor
+		LayerStack();
+		~LayerStack();
 
-		void Run();
-
-		void OnEvent(Event& e);
-
+		/// LayerStack functions and iterator
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
+		void PopLayer(Layer* layer);
+		void PopOverlay(Layer* overlay);
+
+		std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }
+		std::vector<Layer*>::iterator end() { return m_Layers.end(); }
 
 	private:
-		bool OnWindowClose(WindowCloseEvent& e);
-
-		std::unique_ptr<Window> m_Window;
-		bool m_Running = true;
-		LayerStack m_LayerStack;
+		std::vector<Layer*> m_Layers;
+		std::vector<Layer*>::iterator m_LayerInsert;
 
 	};
-
-	/// To be defined in CLIENT
-	Application* CreateApplication();
 
 }

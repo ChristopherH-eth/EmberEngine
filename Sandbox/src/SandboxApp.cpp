@@ -21,11 +21,31 @@
 
 #include <Ember.h>
 
-/// @brief Sandbox class declaration  extends the Application class
+/// @brief The ExampleLayer class extends the Ember Layer class
+class ExampleLayer : public Ember::Layer {
+
+public:
+	ExampleLayer()
+		: Layer("Example") {}
+
+	void OnUpdate() override {
+		EM_INFO("ExampleLayer::Update");
+	}
+
+	void OnEvent(Ember::Event& event) override {
+		EM_TRACE("{0}", event);
+	}
+
+};
+
+/// @brief Sandbox class declaration extends the Application class
 class Sandbox : public Ember::Application {
 
 public:
-	Sandbox() {}
+	Sandbox() {
+		PushLayer(new ExampleLayer());
+	}
+
 	~Sandbox() {}
 
 };
