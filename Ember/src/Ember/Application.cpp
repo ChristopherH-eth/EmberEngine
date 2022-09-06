@@ -16,29 +16,51 @@
 *  @file Application.cpp
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Engine side application translation unit
+*  @brief Application source: This file defines the functions to be handled by the
+*		  application.
 */
 
 #include "empch.h"
 #include "Application.h"
-#include "Ember/Events/ApplicationEvent.h"
 #include "Ember/Log.h"
 #include <GLFW/glfw3.h>
 
 namespace Ember {
 
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+	/// @brief Application constructor and destructor
 	Application::Application() {
 		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application() {}
 
+	/// @brief The OnEvent() function defines what is called when an event is received.
+	void Application::OnEvent(Event& e) {
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		EM_CORE_TRACE("{0}", e);
+	}
+
+	/// @brief The Run() function keeps the application running until it receives a window
+	/// close event.
 	void Application::Run() {
 		while (m_Running) {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
 		}
+	}
+
+	/// @brief The OnWindowClose() function tells the window what to do when a window close
+	/// event is received.
+	bool Application::OnWindowClose(WindowCloseEvent& e) {
+		m_Running = false;
+		
+		return true;
 	}
 
 }

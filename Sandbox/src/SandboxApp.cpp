@@ -21,6 +21,7 @@
 
 #include <Ember.h>
 
+/// @brief Sandbox class declaration  extends the Application class
 class Sandbox : public Ember::Application {
 
 public:
@@ -29,7 +30,7 @@ public:
 
 };
 
-// Launch Sandbox Application CLIENT side
+/// @brief The CreateApplication() function launches Sandbox Application CLIENT side
 Ember::Application* Ember::CreateApplication() {
 	return new Sandbox();
 }

@@ -16,16 +16,17 @@
 *  @file ApplicationEvent.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Application events
+*  @brief Application Events header file: This file handles application events.
 */
 
 #pragma once
 
+#include "empch.h"
 #include "Event.h"
 
 namespace Ember {
 
-	/// @see WindowResizeEvent class extends the Event class
+	/// @brief WindowResizeEvent class extends the Event class
 	class EMBER_API WindowResizeEvent : public Event {
 
 	public:
@@ -49,7 +50,7 @@ namespace Ember {
 		unsigned int m_Width, m_Height;
 	};
 
-	/// @see WindowCloseEvent class extends the Event class
+	/// @brief WindowCloseEvent class extends the Event class
 	class EMBER_API WindowCloseEvent : public Event {
 
 	public:
@@ -59,7 +60,7 @@ namespace Ember {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	/// @see AppTickEvent class extends the Event class
+	/// @brief AppTickEvent class extends the Event class
 	class EMBER_API AppTickEvent : public Event {
 
 	public:
@@ -69,7 +70,7 @@ namespace Ember {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	/// @see AppUpdateEvent class extends the Event class
+	/// @brief AppUpdateEvent class extends the Event class
 	class EMBER_API AppUpdateEvent : public Event {
 
 	public:
@@ -79,7 +80,7 @@ namespace Ember {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	/// @see AppRenderEvent class extends the Event class
+	/// @brief AppRenderEvent class extends the Event class
 	class EMBER_API AppRenderEvent : public Event {
 
 	public:

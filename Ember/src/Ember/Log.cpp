@@ -16,7 +16,8 @@
 *  @file Log.cpp
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Log translation unit
+*  @brief Log source: This file defines the logs behaviors for client side and application
+*		  side logging.
 */
 
 #include "empch.h"
@@ -28,8 +29,8 @@ namespace Ember {
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
-	// The Init() function initializes CLIENT and CORE loggers, as well as format
-	// logger messages.
+	/// @brief The Init() function initializes CLIENT and CORE loggers, as well as format
+	/// logger messages.
 	void Log::Init() {
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 		

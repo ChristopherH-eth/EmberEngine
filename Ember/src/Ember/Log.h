@@ -16,7 +16,8 @@
 *  @file Log.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Log header file
+*  @brief Log header file: This file declares the various functions used by the client
+*		  and application side logging system.
 */
 
 #pragma once
@@ -27,7 +28,7 @@
 
 namespace Ember {
 
-	/// @see The Log class implements spdlog for log formating
+	/// @brief The Log class implements spdlog for log formating
 	class EMBER_API Log {
 
 	public:
@@ -44,14 +45,14 @@ namespace Ember {
 
 }
 
-// Core log macros
+/// @see Core log macros
 #define EM_CORE_TRACE(...)	::Ember::Log::GetCoreLogger()->trace(__VA_ARGS__)
 #define EM_CORE_INFO(...)	::Ember::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define EM_CORE_WARN(...)	::Ember::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define EM_CORE_ERROR(...)	::Ember::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define EM_CORE_FATAL(...)	::Ember::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
-// Client log macros
+/// @see Client log macros
 #define EM_TRACE(...)	::Ember::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define EM_INFO(...)	::Ember::Log::GetClientLogger()->info(__VA_ARGS__)
 #define EM_WARN(...)	::Ember::Log::GetClientLogger()->warn(__VA_ARGS__)

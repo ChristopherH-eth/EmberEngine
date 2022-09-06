@@ -16,7 +16,7 @@
 *  @file EntryPoint.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Client side entry point
+*  @brief Entry Point header file: Client side entry point
 */
 
 #pragma once
@@ -27,12 +27,12 @@ extern Ember::Application* Ember::CreateApplication();
 
 int main(int arc, char** argv) {
 
-	// Initialize loggers
+	/// Initialize loggers
 	Ember::Log::Init();
 	EM_CORE_WARN("Initialized Log!");
 	EM_INFO("Hello!");
 
-	// Launch Sandbox Application
+	/// Launch Sandbox Application
 	auto app = Ember::CreateApplication();
 	app->Run();
 	delete app;

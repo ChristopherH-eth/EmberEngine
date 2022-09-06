@@ -16,7 +16,7 @@
 *  @file MouseEvent.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Mouse events
+*  @brief Mouse Events header file: This file handles input events via the mouse.
 */
 
 #pragma once
@@ -25,7 +25,7 @@
 
 namespace Ember {
 
-	/// @see MouseMovedEvent class extends the Event class
+	/// @brief MouseMovedEvent class extends the Event class
 	class EMBER_API MouseMovedEvent : public Event {
 
 	public:
@@ -49,7 +49,7 @@ namespace Ember {
 		float m_MouseX, m_MouseY;
 	};
 
-	/// @see MouseScrolledEvent class extends the Event class
+	/// @brief MouseScrolledEvent class extends the Event class
 	class EMBER_API MouseScrolledEvent : public Event {
 
 	public:
@@ -73,7 +73,7 @@ namespace Ember {
 		float m_XOffset, m_YOffset;
 	};
 
-	/// @see MouseButtonEvent class contains the MouseButtonEvent constructor
+	/// @brief MouseButtonEvent class contains the MouseButtonEvent constructor
 	class EMBER_API MouseButtonEvent : public Event {
 		
 	public:
@@ -89,8 +89,8 @@ namespace Ember {
 
 	};
 
-	/// @see MouseButtonPressedEvent class extends the MouseButtonEvent class
-	class EMBER_API MouseButtonPressedEvent : MouseButtonEvent {
+	/// @brief MouseButtonPressedEvent class extends the MouseButtonEvent class
+	class EMBER_API MouseButtonPressedEvent : public MouseButtonEvent {
 
 	public:
 		MouseButtonPressedEvent(int button) 
@@ -108,7 +108,7 @@ namespace Ember {
 	};
 
 	/// @see MouseButtonReleasedEvent class extends the MouseButtonEvent class
-	class EMBER_API MouseButtonReleasedEvent : MouseButtonEvent {
+	class EMBER_API MouseButtonReleasedEvent : public MouseButtonEvent {
 
 	public:
 		MouseButtonReleasedEvent(int button)

@@ -16,7 +16,7 @@
 *  @file WindowsWindow.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Windows Window header file
+*  @brief Windows Window header file: Windows platform window implementation.
 */
 
 #pragma once
@@ -26,6 +26,8 @@
 
 namespace Ember {
 
+	/// @brief The WindowsWindow class extends the Window class for Windows OS
+	/// implementation.
 	class WindowsWindow : public Window {
 
 	public:

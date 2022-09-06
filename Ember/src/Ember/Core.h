@@ -16,7 +16,7 @@
 *  @file Core.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Core
+*  @brief Core header file: This file handles OS declarations and assertions.
 */
 
 #pragma once

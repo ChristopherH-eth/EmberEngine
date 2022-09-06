@@ -16,17 +16,20 @@
 *  @file Application.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Application header file
+*  @brief Application header file: This file declares the functions to be used by the
+*		  application source file.
 */
 
 #pragma once
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Ember/Events/ApplicationEvent.h"
 #include "Window.h"
 
 namespace Ember {
 
+	/// @brief The Application class
 	class EMBER_API Application {
 
 	public:
@@ -35,13 +38,17 @@ namespace Ember {
 
 		void Run();
 
+		void OnEvent(Event& e);
+
 	private:
+		bool OnWindowClose(WindowCloseEvent& e);
+
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 
 	};
 
-	// To be defined in CLIENT
+	/// To be defined in CLIENT
 	Application* CreateApplication();
 
 }

@@ -21,11 +21,11 @@
 
 #pragma once
 
-// For use by Ember applications
+/// For use by Ember applications
 
 #include "Ember/Application.h"
 #include "Ember/Log.h"
 
-// ---Entry Point-----------------------
+/// ---Entry Point-----------------------
 #include "Ember/EntryPoint.h"
-// -------------------------------------
+/// -------------------------------------

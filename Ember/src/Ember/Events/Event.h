@@ -16,7 +16,9 @@
 *  @file Event.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Events
+*  @brief Events header file: This file organizes events based on type and category,
+*		  acting as the intermediary between the window and the application/engine
+*		  itself.
 */
 
 #pragma once
@@ -59,7 +61,7 @@ namespace Ember {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	/// @see Base Event class
+	/// @brief Base Event class
 	class EMBER_API Event {
 		friend class EventDispatcher;
 
@@ -77,7 +79,7 @@ namespace Ember {
 		bool m_Handled = false;
 	};
 
-	/// @see The EventDispatcher class handles incoming events of any type and executes the
+	/// @brief The EventDispatcher class handles incoming events of any type and executes the
 	/// corresponding function.
 	class EventDispatcher {
 
@@ -105,7 +107,7 @@ namespace Ember {
 
 	};
 
-	/// @see Output stream for logging
+	/// @brief Output stream for logging
 	inline std::ostream& operator << (std::ostream& os, const Event& e) {
 		return os << e.ToString();
 	}

@@ -16,7 +16,7 @@
 *  @file KeyEvent.h
 *  @author Original Author Yan Chernikov - Used for learning purposes by
 *		0xChristopher
-*  @brief Key events
+*  @brief Key Events header file: This file handles input events via the keyboard.
 */
 
 #pragma once
@@ -25,7 +25,7 @@
 
 namespace Ember {
 
-	/// @see KeyEvent class contains the KeyEvent constructor
+	/// @brief KeyEvent class contains the KeyEvent constructor
 	class EMBER_API KeyEvent : public Event {
 
 		public:
@@ -41,7 +41,7 @@ namespace Ember {
 
 	};
 
-	/// @see KeyPressedEvent class extends the KeyEvent class
+	/// @brief KeyPressedEvent class extends the KeyEvent class
 	class EMBER_API KeyPressedEvent : public KeyEvent {
 
 	public:
@@ -64,7 +64,7 @@ namespace Ember {
 
 	};
 
-	/// @see KeyReleasedEvent class extends KeyEvent class
+	/// @brief KeyReleasedEvent class extends KeyEvent class
 	class EMBER_API KeyReleasedEvent : public KeyEvent {
 
 	public:
